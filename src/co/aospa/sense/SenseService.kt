@@ -136,8 +136,10 @@ class SenseService : Service() {
                         return -1
                     }
                     if (result == 0) {
-                        mIsAuthenticated = true
+                        Log.i(TAG, "Face comparison succeeded; completing authentication")
                         mCameraAuthController!!.stop()
+                        mIsAuthenticated = false
+                        onAuthenticated()
                     }
                 }
                 return result
